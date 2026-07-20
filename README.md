@@ -1,46 +1,44 @@
 <div align="center">
-  <h1>🎶 Signal</h1>
-  <p><b>A Powerful Music Analysis Web App</b></p>
-  <p>
-    <i>Upload a track or provide a URL to get genre prediction, separated stems, transcriptions, language ID, and more!</i>
-  </p>
-  
-  [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://python.org)
-  [![Flask](https://img.shields.io/badge/Flask-3.0%2B-lightgrey?logo=flask)](https://flask.palletsprojects.com/)
-  [![PyTorch](https://img.shields.io/badge/PyTorch-Audio-ee4c2c?logo=pytorch)](https://pytorch.org/)
+
+# 🎶 Signal 
+**Advanced Audio Intelligence Web App**
+
+*Unlock the hidden details of any track. Instantly analyze genre, isolate vocals, transcribe lyrics, detect language, and identify songs.*
+
+<br />
+
+[![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-3.0%2B-lightgrey?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-Audio-ee4c2c?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+---
+
+### 📸 App Interface
+
+<img src="static/ui_screenshot.png" alt="Signal Web App Interface" width="100%" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2);" />
+
 </div>
 
 ---
 
-## 📸 App Interface
+## ✨ Features & Capabilities
 
-![Signal Web App Interface](static/ui_screenshot.png)
-
----
-## ✨ Features
-
-- 🎸 **Genre Prediction**: Classifies tracks into 400 micro-genres using the Essentia Discogs-400 model.
-- ✂️ **Vocal Separation**: Uses [Demucs](https://github.com/facebookresearch/demucs) to extract isolated vocals and instrumentals.
-- 📝 **Transcription**: Transcribes vocals using OpenAI's [Whisper](https://github.com/openai/whisper).
-- 🌍 **Language ID**: Detects language via IndicLID + fastText.
-- 🔍 **Song Identification**: Matches audio with [AcoustID](https://acoustid.org/) and fetches lyrics via [Genius](https://genius.com/).
-- 🔗 **URL Support**: Download and analyze audio directly from YouTube and other platforms via `yt-dlp`.
+| Feature | Description | Powered By |
+| :--- | :--- | :--- |
+| 🎸 **Genre Prediction** | Classifies tracks into 400 micro-genres | `Essentia Discogs-400` |
+| ✂️ **Vocal Separation** | Extracts isolated vocals and instrumentals | `Demucs` |
+| 📝 **Transcription** | Highly accurate vocal transcription | `OpenAI Whisper` |
+| 🌍 **Language ID** | Detects spoken/sung language | `IndicLID + fastText` |
+| 🔍 **Song Identification** | Matches audio & fetches lyrics | `AcoustID` & `Genius` |
+| 🔗 **URL Support** | Download & analyze audio directly via links | `yt-dlp` |
 
 ---
 
-## ⚡ What changed vs. the original notebook?
-
-- **Models load once**, at app startup, instead of once per notebook cell run.
-- **API keys are environment variables**, not hardcoded strings — see `.env.example`. Never commit your real `.env` file!
-- **Resilient Pipeline**: Every pipeline function keeps working if another one fails to load. If the genre model files can't download, the app still starts and that route just returns a clear error. Check `/api/health` to see status.
-- **Auto-Cleanup**: Uploaded files are deleted after each request so disk usage doesn't grow unbounded. Demucs' separated stems are cached under `separated/`.
-
----
-
-## 🚀 Setup & Installation
+## 🚀 Quick Start Guide
 
 ### 1️⃣ System Dependencies
-You need **Chromaprint** for AcoustID fingerprinting.
+You will need **Chromaprint** for AcoustID fingerprinting.
 ```bash
 # Ubuntu/Debian
 sudo apt-get install -y libchromaprint-tools
@@ -50,35 +48,34 @@ brew install chromaprint
 ```
 
 ### 2️⃣ Python Environment
-Python 3.10–3.11 is recommended for Essentia/Torch compatibility.
+> **Note:** Python 3.10–3.11 is strictly recommended for Essentia/Torch compatibility.
+
 ```bash
-# Create and activate virtual environment
 python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
-
-# Install dependencies
 pip install -r requirements.txt
 ```
 
 ### 3️⃣ API Keys
-Copy `.env.example` to `.env` and fill in your free keys:
+Set up your environment variables safely:
 ```bash
 cp .env.example .env
 ```
-- **AcoustID**: Get your key [here](https://acoustid.org/new-application)
-- **Genius**: Get your token [here](https://genius.com/api-clients)
+* **AcoustID**: Get your key [here](https://acoustid.org/new-application)
+* **Genius**: Get your token [here](https://genius.com/api-clients)
 
 ### 4️⃣ Run the App
 ```bash
 python app.py
 ```
-> **Note:** The first run will download the genre model files, Whisper weights, and IndicLID models. This can take several minutes and requires a few GB of disk space. Subsequent starts are lightning fast! ⚡️
-
-Open [http://localhost:5000](http://localhost:5000) in your browser.
+> ⚡️ **First Run Note:** The initial run downloads the genre model files, Whisper weights, and IndicLID models (requires a few GBs). **Subsequent starts are lightning fast!**
 
 ---
 
-## 🏗 Project Layout
+## 🏗 Project Architecture
+
+<details>
+<summary><b>Click to view the directory structure</b></summary>
 
 ```text
 music_flask_app/
@@ -93,30 +90,47 @@ music_flask_app/
 ├── separated/          # ✂️ Demucs output cache (auto-created)
 └── model_files/        # 📥 Downloaded model weights (cached)
 ```
+</details>
+
+---
+
+## ⚡ What changed vs. the original notebook?
+
+* 🔄 **Models load once** at app startup, instead of once per notebook cell run.
+* 🔐 **API keys are secure** via environment variables (`.env`).
+* 🛡 **Resilient Pipeline:** If one model fails to download (e.g., the genre model), the app still boots, and that specific route returns a clear error instead of crashing the server.
+* 🧹 **Auto-Cleanup:** Uploaded files are deleted post-request to manage disk usage.
 
 ---
 
 ## ⏱️ Timing Expectations
 
-Vocal separation adds real processing time — a track that used to go straight to Whisper now runs through Demucs first. On a CPU, this is noticeably slower than on a GPU. 
-
-> **Tip:** Uncheck "Separate vocals before transcribing" in the UI (or send `separate_vocals=false` to the API) to skip straight to transcribing the full mix if that latency isn't acceptable for your use case.
+> 💡 **Pro Tip:** Vocal separation adds real processing time. On a CPU, running Demucs before Whisper is noticeably slower than on a GPU. Uncheck *"Isolate vocals before transcribing"* in the UI to skip straight to transcribing the full mix if speed is your priority!
 
 ---
 
 ## 🛠️ Production Notes
 
-This is a **working, synchronous** app — perfect for local use, demos, or low-traffic internal tools. If you plan to deploy it in front of real traffic, consider adding:
+<details>
+<summary><b>Planning to deploy? Read this first</b></summary>
 
-- **Job queue (Celery/RQ + Redis)**: Audio requests can take 30s–several minutes. A synchronous Flask request will time out under a real load balancer or reverse proxy. Swap the audio route to enqueue a job and poll/return a job ID instead of blocking. `models.analyze_audio_upload()` is already a plain function with no Flask dependency, so it drops into a worker task unchanged.
-- **Production WSGI server**: Use `gunicorn` or `uwsgi` instead of Flask's dev server (`debug=True` should never run in production).
-- **Cache Management**: The `separated/` folder will grow unbounded. Implement a cron job to clear it periodically.
-- **Rate Limiting / Auth**: Protect your endpoints since each request is compute-heavy.
-- **HTTPS & Secure Cookies**: Use HTTPS + a real `SECRET_KEY` if you add sessions or CSRF protection later.
+This is a **working, synchronous** app — perfect for local use, demos, or low-traffic internal tools. If deploying to production traffic:
 
----
+1. **Job Queue (Celery/RQ + Redis)**: Audio requests take 30s–several minutes. A synchronous Flask request will timeout. Swap the audio route to enqueue a job. `models.analyze_audio_upload()` is already a standalone function and drops into a worker task perfectly.
+2. **Production WSGI**: Use `gunicorn` or `uwsgi` instead of Flask's dev server.
+3. **Cache Management**: The `separated/` folder grows unbounded. Implement a cron job to clear it.
+4. **Rate Limiting**: Protect your endpoints; each request is compute-heavy.
 
-## 📜 Licensing Reminder
+</details>
 
-- **Non-Commercial**: Genre model and AcoustID. Check Genius's API terms before commercial use.
-- **MIT License**: Demucs and Whisper have no such restriction.
+<details>
+<summary><b>📜 Licensing Reminder</b></summary>
+
+* **Non-Commercial**: Genre model and AcoustID. Check Genius's API terms before commercial use.
+* **MIT License**: Demucs and Whisper have no such restriction.
+</details>
+
+<br/>
+<div align="center">
+  <sub>Built with ❤️ using Python, Flask, and AI</sub>
+</div>

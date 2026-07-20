@@ -3,115 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signal — music analysis</title>
+<title>Signal - Advanced Audio Intelligence</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="vintage-container">
-  <header class="topline">
-    <div class="brand-box">
-      <div class="brand-icon">
-        <!-- Abstract geometric shape (neo-brutalist logo) -->
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="var(--amber)"><path d="M12 2A10 10 0 0 0 2 12h10V2zm0 20a10 10 0 0 0 10-10H12v10z"/></svg>
-      </div>
-      <span class="brand">SIGNAL</span>
-    </div>
-    <div class="nav-links">
-      <span>HOME</span>
-      <span>ABOUT</span>
-      <span>SUPPORT</span>
-    </div>
-    <div class="status-box">
-      <span class="status" id="health-status">checking models…</span>
-    </div>
-  </header>
+  <!-- Dynamic Background -->
+  <div class="bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
 
-  <main class="grid-deck">
+  <div class="glass-container">
     
-    <!-- Left Column: Title & Decor -->
-    <div class="grid-left">
-      <p class="eyebrow">FEATURED TOOL</p>
-      <h1>AUDIO<br>ANALYSIS</h1>
-      <p class="subtitle">Feed it a track. It reads the room. Genre, separated vocals, transcribed lyrics, language, and a song-ID lookup.</p>
-      
-      <!-- Vintage Squiggle -->
-      <svg class="decor-squiggle" viewBox="0 0 100 40" width="100" height="40" stroke="var(--amber)" stroke-width="2" fill="none" stroke-linecap="round"><path d="M5 20 Q15 5 25 20 T45 20 T65 20 T85 20"/></svg>
-      
-      <div class="price-tag">FREE USE</div>
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FF3366" />
+              <stop offset="100%" stop-color="#FF9933" />
+            </linearGradient>
+          </defs>
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+        </svg>
+        <span>Signal</span>
+      </div>
+      <div class="status-indicator">
+        <span class="pulse-dot"></span>
+        <span id="health-status">System Ready</span>
+      </div>
+    </header>
 
-      <nav class="tabs" role="tablist">
-        <button class="tab active" data-tab="audio" role="tab" aria-selected="true">AUDIO UPLOAD ↘</button>
-        <button class="tab" data-tab="lyrics" role="tab" aria-selected="false">LYRICS ONLY ↘</button>
-      </nav>
+    <!-- Main Content -->
+    <main class="main-content">
       
-      <!-- Vintage Starburst -->
-      <svg class="decor-starburst" viewBox="0 0 100 100" width="80" height="80" fill="var(--amber)">
-        <path d="M50 0 L55 35 L90 10 L65 45 L100 50 L65 55 L90 90 L55 65 L50 100 L45 65 L10 90 L35 55 L0 50 L35 45 L10 10 L45 35 Z"/>
-      </svg>
-    </div>
+      <div class="hero-section">
+        <div class="badge">AI-Powered</div>
+        <h1>Audio <br><span>Intelligence</span></h1>
+        <p>Unlock the hidden details of any track. Instantly analyze genre, isolate vocals, transcribe lyrics, detect language, and identify songs.</p>
+      </div>
 
-    <!-- Right Column: Interactive Panels -->
-    <div class="grid-right">
-      
-      <!-- AUDIO PANEL -->
-      <section class="panel active" id="panel-audio">
-        <form id="audio-form">
-          <label class="dropzone" id="dropzone" for="audio-input">
-            <input type="file" id="audio-input" name="audio" accept=".mp3,.wav,.m4a,.flac,.ogg,.webm" hidden>
-            <div class="dropzone-content">
-              <div class="waveform" aria-hidden="true">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
+      <div class="interactive-section">
+        
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="audio">Audio Upload</button>
+          <button class="tab-btn" data-tab="lyrics">Lyrics Analysis</button>
+        </div>
+
+        <!-- AUDIO PANEL -->
+        <section class="panel active" id="panel-audio">
+          <form id="audio-form">
+            <label class="dropzone" id="dropzone" for="audio-input">
+              <input type="file" id="audio-input" name="audio" accept=".mp3,.wav,.m4a,.flac,.ogg,.webm" hidden>
+              <div class="dropzone-content">
+                <div class="upload-icon">
+                  <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                </div>
+                <h3>Drop your audio track here</h3>
+                <p id="dropzone-label">or click to browse files</p>
               </div>
-              <p id="dropzone-label">Drop audio file here<br><span class="hint">or click to choose</span></p>
+            </label>
+
+            <div class="options-row">
+              <label class="toggle-switch">
+                <input type="checkbox" id="separate-vocals" checked>
+                <span class="slider"></span>
+              </label>
+              <span class="option-label">Isolate vocals before transcribing</span>
             </div>
-          </label>
 
-          <label class="toggle-row">
-            <input type="checkbox" id="separate-vocals" checked>
-            <span>Separate vocals before transcribing</span>
-          </label>
+            <button type="submit" class="primary-btn" id="audio-submit" disabled>
+              <span>Analyze Track</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </form>
 
-          <button type="submit" class="run-btn" id="audio-submit" disabled>
-            ANALYZE TRACK <span class="btn-arrow">→</span>
-          </button>
-        </form>
+          <div class="loading-state" id="audio-loading" hidden>
+            <div class="spinner"></div>
+            <p id="audio-loading-text">Running complex models... Please wait.</p>
+          </div>
 
-        <div class="loading" id="audio-loading" hidden>
-          <div class="pulse-bar"><div class="pulse-fill"></div></div>
-          <p id="audio-loading-text">Running genre, separation, transcription, language, song ID…</p>
-        </div>
+          <div class="results-container" id="audio-results" hidden></div>
+          <div class="error-container" id="audio-error" hidden></div>
+        </section>
 
-        <div class="results" id="audio-results" hidden></div>
-        <div class="error-box" id="audio-error" hidden></div>
-      </section>
+        <!-- LYRICS PANEL -->
+        <section class="panel" id="panel-lyrics">
+          <form id="lyrics-form">
+            <div class="textarea-wrapper">
+              <textarea id="lyrics-input" placeholder="Paste a distinctive lyric fragment here to discover the song..." rows="6"></textarea>
+            </div>
+            <button type="submit" class="primary-btn">
+              <span>Analyze Lyrics</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </form>
 
-      <!-- LYRICS PANEL -->
-      <section class="panel" id="panel-lyrics">
-        <form id="lyrics-form">
-          <textarea id="lyrics-input" placeholder="Paste a distinctive lyric fragment here..." rows="8"></textarea>
-          <button type="submit" class="run-btn">
-            ANALYZE LYRICS <span class="btn-arrow">→</span>
-          </button>
-        </form>
+          <div class="loading-state" id="lyrics-loading" hidden>
+            <div class="spinner"></div>
+            <p>Detecting language and matching against database...</p>
+          </div>
 
-        <div class="loading" id="lyrics-loading" hidden>
-          <div class="pulse-bar"><div class="pulse-fill"></div></div>
-          <p>Detecting language and searching Genius…</p>
-        </div>
+          <div class="results-container" id="lyrics-results" hidden></div>
+          <div class="error-container" id="lyrics-error" hidden></div>
+        </section>
 
-        <div class="results" id="lyrics-results" hidden></div>
-        <div class="error-box" id="lyrics-error" hidden></div>
-      </section>
+      </div>
+    </main>
 
-    </div>
-  </main>
-</div>
-
-<footer class="foot">
-  Genre &amp; song-ID run on the full mix · lyrics are transcribed from Demucs-separated vocals
-</footer>
+  </div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
