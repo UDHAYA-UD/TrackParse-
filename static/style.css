@@ -417,71 +417,71 @@ textarea#lyrics-input:focus { outline: none; border-color: var(--amber); }
   .grid-right { padding: 30px 20px; }
   .decor-squiggle { display: none; }
 }
-/ *   - - -   N e w   T a b s   A d d i t i o n s   - - -   * / 
- . t e x t - i n p u t   { 
-     w i d t h :   1 0 0 % ; 
-     b a c k g r o u n d :   t r a n s p a r e n t ; 
-     b o r d e r :   1 p x   s o l i d   v a r ( - - l i n e ) ; 
-     c o l o r :   v a r ( - - t e x t ) ; 
-     f o n t - f a m i l y :   v a r ( - - b o d y ) ; 
-     f o n t - s i z e :   1 4 p x ; 
-     p a d d i n g :   1 6 p x ; 
-     m a r g i n - b o t t o m :   2 4 p x ; 
-     o u t l i n e :   n o n e ; 
- } 
- . t e x t - i n p u t : f o c u s   { 
-     b o r d e r - c o l o r :   v a r ( - - a m b e r ) ; 
- } 
- 
- . r e c o r d - z o n e   { 
-     d i s p l a y :   f l e x ; 
-     f l e x - d i r e c t i o n :   c o l u m n ; 
-     a l i g n - i t e m s :   c e n t e r ; 
-     j u s t i f y - c o n t e n t :   c e n t e r ; 
-     b o r d e r :   2 p x   d a s h e d   v a r ( - - l i n e ) ; 
-     p a d d i n g :   4 0 p x ; 
-     m a r g i n - b o t t o m :   2 4 p x ; 
-     g a p :   1 6 p x ; 
- } 
- . r e c o r d - b t n   { 
-     b a c k g r o u n d :   t r a n s p a r e n t ; 
-     b o r d e r :   1 p x   s o l i d   v a r ( - - a m b e r ) ; 
-     c o l o r :   v a r ( - - a m b e r ) ; 
-     f o n t - f a m i l y :   v a r ( - - d i s p l a y ) ; 
-     p a d d i n g :   1 2 p x   2 4 p x ; 
-     c u r s o r :   p o i n t e r ; 
-     d i s p l a y :   f l e x ; 
-     a l i g n - i t e m s :   c e n t e r ; 
-     g a p :   1 2 p x ; 
-     t r a n s i t i o n :   a l l   0 . 2 s   e a s e ; 
- } 
- . r e c o r d - b t n : h o v e r   { 
-     b a c k g r o u n d :   r g b a ( 2 3 2 ,   1 6 3 ,   6 1 ,   0 . 1 ) ; 
- } 
- . r e c o r d - b t n . r e c o r d i n g   { 
-     b a c k g r o u n d :   r g b a ( 2 5 5 ,   6 0 ,   6 0 ,   0 . 1 ) ; 
-     b o r d e r - c o l o r :   # f f 3 c 3 c ; 
-     c o l o r :   # f f 3 c 3 c ; 
-     a n i m a t i o n :   p u l s e - b o r d e r   1 . 5 s   i n f i n i t e ; 
- } 
- . r e c o r d - i c o n   { 
-     w i d t h :   1 2 p x ; 
-     h e i g h t :   1 2 p x ; 
-     b o r d e r - r a d i u s :   5 0 % ; 
-     b a c k g r o u n d :   v a r ( - - a m b e r ) ; 
- } 
- . r e c o r d - b t n . r e c o r d i n g   . r e c o r d - i c o n   { 
-     b a c k g r o u n d :   # f f 3 c 3 c ; 
-     b o r d e r - r a d i u s :   2 p x ; 
- } 
- @ k e y f r a m e s   p u l s e - b o r d e r   { 
-     0 %   {   b o x - s h a d o w :   0   0   0   0   r g b a ( 2 5 5 ,   6 0 ,   6 0 ,   0 . 4 ) ;   } 
-     7 0 %   {   b o x - s h a d o w :   0   0   0   1 0 p x   r g b a ( 2 5 5 ,   6 0 ,   6 0 ,   0 ) ;   } 
-     1 0 0 %   {   b o x - s h a d o w :   0   0   0   0   r g b a ( 2 5 5 ,   6 0 ,   6 0 ,   0 ) ;   } 
- } 
- # r e c o r d - t i m e r   { 
-     f o n t - f a m i l y :   v a r ( - - d i s p l a y ) ; 
-     f o n t - s i z e :   2 4 p x ; 
-     c o l o r :   # f f 3 c 3 c ; 
- }  
- 
+
+/* --- New Tabs Additions --- */
+.text-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 14px;
+  padding: 16px;
+  margin-bottom: 24px;
+  outline: none;
+}
+.text-input:focus {
+  border-color: var(--amber);
+}
+
+.record-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--line);
+  padding: 40px;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+.record-btn {
+  background: transparent;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  font-family: var(--display);
+  padding: 12px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+.record-btn:hover {
+  background: rgba(232, 163, 61, 0.1);
+}
+.record-btn.recording {
+  background: rgba(255, 60, 60, 0.1);
+  border-color: #ff3c3c;
+  color: #ff3c3c;
+  animation: pulse-border 1.5s infinite;
+}
+.record-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+.record-btn.recording .record-icon {
+  background: #ff3c3c;
+  border-radius: 2px;
+}
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(255, 60, 60, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 60, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 60, 60, 0); }
+}
+#record-timer {
+  font-family: var(--display);
+  font-size: 24px;
+  color: #ff3c3c;
+}
