@@ -12,6 +12,11 @@
 
 ---
 
+## 📸 App Interface
+
+![Signal Web App Interface](static/ui_screenshot.png)
+
+---
 ## ✨ Features
 
 - 🎸 **Genre Prediction**: Classifies tracks into 400 micro-genres using the Essentia Discogs-400 model.
