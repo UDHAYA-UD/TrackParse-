@@ -250,7 +250,8 @@ def transcribe_audio(file_path: str) -> str:
         file_path,
         generate_kwargs={
             "condition_on_prev_tokens": False,
-            "max_new_tokens": 256
+            "max_new_tokens": 256,
+            "repetition_penalty": 1.5
         }
     )
     return result["text"].strip()
